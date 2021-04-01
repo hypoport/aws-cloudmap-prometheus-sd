@@ -121,6 +121,10 @@ func (a *Adapter) writeOutput() error {
 	if err != nil {
 		return err
 	}
+	err = tmpfile.Chmod(0644)
+	if err != nil {
+		return err
+	}
 	defer tmpfile.Close()
 
 	_, err = tmpfile.Write(b)
